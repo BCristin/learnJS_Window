@@ -87,7 +87,7 @@ const modals = () => {
 		".popup_calc_end_close",
 		false
 	);
-	// showModalbyTime(".popup", 60000);
+	showModalbyTime(".popup", 60000);
 };
 
 export default modals;
