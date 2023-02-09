@@ -1,14 +1,9 @@
 import checkNumInputs from "./checkNumInputs";
 export default function forms(state) {
 	const form = document.querySelectorAll("form");
-	// const input = document.querySelectorAll("input");
+	const input = document.querySelectorAll("input");
 	checkNumInputs("input[name='user_phone']");
-	// const phoneInputs = document.querySelectorAll("input[name='user_phone']");
-	// phoneInputs.forEach((item) => {
-	// 	item.addEventListener("input", () => {
-	// 		item.value = item.value.replace(/\D/, "");
-	// 	});
-	// });
+
 	const message = {
 		loading: "Se trimite",
 		success: " Multumim, forma a fost trimisa",
@@ -24,11 +19,11 @@ export default function forms(state) {
 		return await res.text();
 	};
 
-	// const clearInputs = () => {
-	// 	input.forEach((item) => {
-	// 		item.value = "";
-	// 	});
-	// };
+	const clearInputs = () => {
+		input.forEach((item) => {
+			item.value = "";
+		});
+	};
 	form.forEach((item) => {
 		item.addEventListener("submit", (e) => {
 			e.preventDefault();
@@ -54,8 +49,12 @@ export default function forms(state) {
 					statusMessage.textContent = message.failure;
 				})
 				.finally(() => {
-					// clearInputs();
-					item.reset();
+					clearInputs();
+					// item.reset();
+					for (const key in state) {
+						delete state[key];
+					}
+
 					setTimeout(() => {
 						statusMessage.remove();
 					}, 10000);

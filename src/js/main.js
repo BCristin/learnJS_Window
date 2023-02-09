@@ -5,6 +5,7 @@ import forms from "./modules/forms";
 import changeModalState from "./modules/changeModalState";
 import timer from "./modules/timer";
 import images from "./modules/images";
+import closeModalByTime from "./modules/closeModal";
 
 window.addEventListener("DOMContentLoaded", () => {
 	"use strict";
@@ -31,4 +32,5 @@ window.addEventListener("DOMContentLoaded", () => {
 	forms(modalState);
 	timer(".container1", deadline);
 	images();
+	closeModalByTime("[data-close]", ".popup_calc_end", 7000);
 });

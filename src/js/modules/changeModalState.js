@@ -12,6 +12,9 @@ export default function changeModalState(state) {
 	function bindActionToElems(event, elem, prop) {
 		elem.forEach((item, i) => {
 			item.addEventListener(event, () => {
+				state.form = 0;
+				state.type = "tree";
+
 				switch (item.nodeName) {
 					case "SPAN":
 						state[prop] = i;
